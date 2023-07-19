@@ -4,16 +4,18 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, Routes, Route } from "react-router-dom";
 import Home from "./Home";
+import Favorites from "./Favorites";
+import BattleTeams from "./BattleTeams";
+import SearchPage from "./SearchPage";
+import PokemonInfo from "./PokemonInfo";
+import NotFound from "./NOTFOUND";
 
 const Navigation = () => {
     return (
         <>
-            <Navbar bg="dark" variant="dark">
+            <Navbar>
                 <Container>
-                    <Nav
-                        className="justify-content-between"
-                        style={{ width: "100%" }}
-                    >
+                    <Nav>
                         <Nav.Item>
                             <Nav.Link as={Link} to="/" className="nav-link">
                                 Home
@@ -31,10 +33,19 @@ const Navigation = () => {
                         <Nav.Item>
                             <Nav.Link
                                 as={Link}
+                                to="/battleteams"
+                                className="nav-link"
+                            >
+                                Battle Teams
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link
+                                as={Link}
                                 to="/searchpage"
                                 className="nav-link"
                             >
-                                SearchPage
+                                Search Pokemon
                             </Nav.Link>
                         </Nav.Item>
                     </Nav>
@@ -42,16 +53,11 @@ const Navigation = () => {
             </Navbar>
             <Routes>
                 <Route path="/" element={<Home />} />
-                {/* <Route
-                    path="/favorites"
-                    element={<Favorites selectData={selectData} />}
-                />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="/battleteams" element={<BattleTeams />} />
                 <Route path="/searchpage" element={<SearchPage />} />
-                <Route
-                    path="/movieshowpage/:id"
-                    element={<MovieShowPage selectData={selectData} />}
-                />
-                <Route path="*" element={<NotFound />} /> */}
+                <Route path="/pokemoninfo/:id" element={<PokemonInfo />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </>
     );
